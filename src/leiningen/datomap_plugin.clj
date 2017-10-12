@@ -14,14 +14,12 @@
       (require 'datomic.api)
       (require 'datomap.core)
       (require 'datomap.io)
-      (println "ABOUT TO LETFN's")
       (letfn [;; Parse arg kv pain
               (parse-arg# [[k# v#]]
                 (let [kw# (keyword (subs k# 1))]
                   [kw# v#]))
               ;; Parse plugin arg vector
               (parse-args# [args#]
-                (println args#)
                 (let [arg-count# (count args#)]
                   (if (even? arg-count#)
                     (into {} (map parse-arg# (apply hash-map args#)))
@@ -48,7 +46,6 @@
                                   {:causes #{:no-file-out}}))))
               ;; plugin entry point
               (plugin# [args#]
-                (println args#)
                 (let [{op# :op
                        uri# :uri
                        graph-type# :graph-type
@@ -58,12 +55,9 @@
                             graph-type# "tables"}} (parse-args# args#)
                       conn# (datomic.api/connect uri#)
                       db# (datomic.api/db conn#)]
-                  (println "GETS HERE")
                   (case op#
                     "graph" (render-graph# graph-type# db#)
                     "save-graph" (save-graph# file-out# db#)
                     "dump-schema" (dump-edn-schema# file-out# db#))))]
         ;; call plugin
-        (println "ABOUT TO CALL PLUGIN")
-        (println ~@args)
         (plugin# [~@args])))))

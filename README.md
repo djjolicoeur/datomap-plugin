@@ -2,11 +2,11 @@
 
  A plugin that provides some schema utilities and visualizations from the
  command line. Developing against virtual machines and containers is great
- for standardizing enviroments and developer throughput, however it cna be
- difficult when you want to write to your local filesystem or utlize a windowing
- server to render a visualization. This plugin aims to provide the same
- functionality you would get from the datomap projec with regard to visualizing
- your datomic schema or dumping that schema to disk.
+ for standardizing enviroments and developer throughput, however it can be
+ difficult when you want to write to the local host's filesystem or utlize
+ a windowing server to render a visualization. This plugin aims to provide the
+ same functionality you would get from the datomap projec with regard to
+ visualizing your datomic schema or dumping that schema to disk.
 
 ![](doc/schema.png)
 

@@ -1,21 +1,38 @@
 # datomap-plugin
 
-A Leiningen plugin to do many wonderful things.
+ A plugin that provides some schema utilities and visualizations from the
+ command line. Developing against virtual machines and containers is great
+ for standardizing enviroments and developer throughput, however it cna be
+ difficult when you want to write to your local filesystem or utlize a windowing
+ server to render a visualization. This plugin aims to provide the same
+ functionality you would get from the datomap projec with regard to visualizing
+ your datomic schema or dumping that schema to disk.
 
-## Usage
+![](doc/schema.png)
 
-FIXME: Use this for user-level plugins:
+## Project Inclusion
+
+You can add this plugin at the project or user level.  I personally have added
+it to my user profile in `~/.lein/profiles.clj`
+
+Use this for user-level plugins:
 
 Put `[datomap-plugin "0.1.0-SNAPSHOT"]` into the `:plugins` vector of your `:user`
 profile.
 
-FIXME: Use this for project-level plugins:
+Use this for project-level plugins:
 
 Put `[datomap-plugin "0.1.0-SNAPSHOT"]` into the `:plugins` vector of your project.clj.
 
-FIXME: and add an example usage that actually makes sense:
+ * `$ lein datomap :uri <datomic uri>`
+  --renders graphiz table representation to screen
+ *  `$ lein datomap :uri <datomic uri> :graph-type \"nodes\"`
+  --renders graphiz directed graph where every attribute is a node
+ * `$ lein datomap :uri <datomic uri> :op \"save-graph\" :file-out \"/path/to/file.png\"`
+  --save graphiz tables of schema to file
+ * `$ lein datomap :uri <datomic uri> :op \"dump-schema \" :file-out \"path/to/file.end>\"`
+  --dumps edn file of schema attributes to :file-out"
 
-    $ lein datomap-plugin
 
 ## License
 

@@ -5,7 +5,7 @@
  for standardizing enviroments and developer throughput, however it can be
  difficult when you want to write to the local host's filesystem or utlize
  a windowing server to render a visualization. This plugin aims to provide the
- same functionality you would get from the datomap projec with regard to
+ same functionality you would get from the datomap project with regard to
  visualizing your datomic schema or dumping that schema to disk.
 
 ![](doc/schema.png)

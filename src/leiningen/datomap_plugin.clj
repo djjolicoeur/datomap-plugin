@@ -49,11 +49,14 @@
                                :causes #{:invalid-args}})))))
               ;; Render graphviz graph
               (render-graph# [graph-type# db#]
-                (let [jframe# (case graph-type#
-                               "tables" (datomap.io/show-schema-tables! db#)
-                               "nodes" (datomap.io/show-schema-nodes! db#))]
-                  (.setDefaultCloseOperation jframe# JFrame/EXIT_ON_CLOSE)
-                  (while true (Thread/sleep 500))))
+                (case graph-type#
+                  "tables" (let [jframe# (datomap.io/show-schema-tables! db#)]
+                             (.setDefaultCloseOperation jframe#
+                                                        JFrame/EXIT_ON_CLOSE)
+                             (while true (Thread/sleep 500)))
+                  "nodes" (do (datomap.io/show-schema-nodes! db#)
+                              (Thread/sleep 500)
+                              (System/exit 0))))
               ;; save graphviz image
               (save-graph# [file-out# db#]
                 (if file-out#
